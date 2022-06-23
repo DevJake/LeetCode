@@ -18,19 +18,13 @@ class Solution {
     
     public int[] findMode(TreeNode root) {
         postorder(root);
-        
-        // int largestMode = map.lastEntry().getValue();
-        int largestMode = Collections.max(map.values());
-        
-        return map.entrySet().stream().filter(e -> e.getValue() == largestMode).mapToInt(v -> v.getKey()).toArray();
+        int m = Collections.max(map.values());
+        return map.entrySet().stream().filter(e -> e.getValue() == m).mapToInt(v -> v.getKey()).toArray();
     }
     
     void postorder(TreeNode node){
-        if (node.left != null)
-            postorder(node.left);
-        
-        if (node.right != null)
-            postorder(node.right);
+        if (node.left != null) postorder(node.left);
+        if (node.right != null) postorder(node.right);
         
         map.put(node.val, map.getOrDefault(node.val, 0) + 1);
     }
