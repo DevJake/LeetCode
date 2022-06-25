@@ -4,4 +4,4 @@ class Solution:
         for s in strs:
             g[''.join(sorted(s))].append(s)
             
-        return list(g.values())
+        return g.values()
