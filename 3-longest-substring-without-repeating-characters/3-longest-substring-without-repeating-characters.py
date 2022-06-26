@@ -5,13 +5,10 @@ class Solution:
         longest = 0
         
         for right, c in enumerate(s):
-            if c not in s[left:right]:
+            if c not in s[left:right] or d[c] < left:
                 longest = max(longest, right+1-left)
             else:
-                if d[c] < left:
-                    longest = max(longest, right+1-left)
-                else:
-                    left = d[c] + 1
+                left = d[c] + 1
         
             d[c] = right
         
