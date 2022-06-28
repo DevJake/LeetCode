@@ -1,5 +1,3 @@
-import re
-
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
         for c in s:
