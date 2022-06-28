@@ -7,5 +7,4 @@ class Solution:
                 return False
             
             t = t[t.index(c)+1:]
-            print(t)
         return True
