@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    private TreeMap<Integer, Integer> map = new TreeMap<>();
+    private HashMap<Integer, Integer> map = new HashMap<>();
     
     public int[] findMode(TreeNode root) {
         postorder(root);
