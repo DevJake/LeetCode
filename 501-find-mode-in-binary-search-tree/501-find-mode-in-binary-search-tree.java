@@ -24,8 +24,8 @@ class Solution {
     
     void postorder(TreeNode node){
         if (node.left != null) postorder(node.left);
+        map.put(node.val, map.getOrDefault(node.val, 0) + 1);
         if (node.right != null) postorder(node.right);
         
-        map.put(node.val, map.getOrDefault(node.val, 0) + 1);
     }
 }
