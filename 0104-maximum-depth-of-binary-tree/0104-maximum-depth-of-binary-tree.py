@@ -6,27 +6,11 @@
 #         self.right = right
 
 class Solution:
-    c = 1
-    deepest = c
-    def dfs(self, nodes, n):
-        if n and n not in nodes:
-            nodes.append(n)
-            if n.left:
-                self.c += 1
-                self.dfs(nodes, n.left)
-                if self.c > self.deepest:
-                    self.deepest = self.c
-                self.c -= 1
-            if n.right:
-                self.c += 1
-                self.dfs(nodes, n.right)
-                if self.c > self.deepest:
-                    self.deepest = self.c
-                self.c -= 1
-    
-    def maxDepth(self, root) -> int:
-        if not root:
-            return 0
-        nodes = []
-        self.dfs(nodes, root)
-        return self.deepest
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        def dfs(node, depth):
+            if not node:
+                return depth
+        
+            return max(dfs(node.left, depth+1), dfs(node.right, depth+1))
+        
+        return dfs(root, 0)
