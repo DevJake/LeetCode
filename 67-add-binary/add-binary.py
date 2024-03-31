@@ -1,30 +1,22 @@
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
-        out = ''
-        carry = 0
+        m = {
+            0: ('0', 0),
+            1: ('1', 0),
+            2: ('0', 1),
+            3: ('1', 1)
+        }
+
+        o, c = '', 0
 
         for i in range(max(len(a), len(b))):
-            l = a[len(a)-i-1] if i < len(a) else 0
-            r = b[len(b)-i-1] if i < len(b) else 0
+            s = sum([int(a[len(a)-i-1] if i < len(a) else 0), int(b[len(b)-i-1] if i < len(b) else 0), c])
 
-            l, r = int(l), int(r)
+            g, f = m[s]
+            o += g
+            c = f
 
-            s = sum([l, r, carry])
-
-            match s:
-                case 0:
-                    out += '0'
-                    carry = 0
-                case 1:
-                    out += '1'
-                    carry = 0
-                case 2:
-                    out += '0'
-                    carry = 1
-                case 3:
-                    out += '1'
-                    carry = 1
-        if carry == 1:
-            out += '1'
+        if c == 1:
+            o += '1'
         
-        return out[::-1]
+        return o[::-1]
