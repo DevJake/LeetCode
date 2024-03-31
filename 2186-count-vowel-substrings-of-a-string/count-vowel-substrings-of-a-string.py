@@ -11,6 +11,5 @@ class Solution:
             else:
                 lv[x] = i
                 ans += max(min(lv.values())-lc, 0)
-            print(f'{lc=}, {lv=}, {ans=}')
 
         return ans
