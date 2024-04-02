@@ -11,9 +11,7 @@ class Solution:
         
         x0 = x/2
 
-        epsilon = 0.0000001
-
-        tolerance = 0.1
+        epsilon, tolerance = 1e-6, 0.1
 
         while True:
             y = self.f(x0, x)
